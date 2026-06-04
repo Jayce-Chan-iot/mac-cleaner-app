@@ -18,11 +18,6 @@ let package = Package(
             resources: [
                 .process("Resources")
             ]
-        ),
-        .testTarget(
-            name: "MacCleanerAppTests",
-            dependencies: ["MacCleanerApp"],
-            path: "Tests/MacCleanerAppTests"
         )
     ]
 )

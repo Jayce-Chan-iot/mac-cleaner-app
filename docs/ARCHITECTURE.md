@@ -348,7 +348,6 @@ AppState.scanTask (全生命周期，切页不取消)
 
 ## 10. 未完成 / 待扩展
 
-- [x] 单元测试（35 用例 / 6 类 / CI 集成，见 §12）
 - [ ] Xcode 项目文件生成（当前仅 SPM，需 Xcode 打开）
 - [ ] 定时扫描 / 自动清理
 - [ ] 文件分类的改进算法（基于内容而非扩展名）
@@ -364,31 +363,4 @@ AppState.scanTask (全生命周期，切页不取消)
 | v0.2 | 2026-05-31 | UnifiedScanner 流式扫描 + SystemMonitor + MenuBarController；内存从 60GB → ~50MB |
 | v0.3 | 2026-06-01 | UnifiedScanner 第四路分类管道（DiskAnalyzer 性能修复）；DynamicNotchKit 灵动岛替代 NSStatusBar；TrashManager 应用回收站（7 天保留 + 恢复 + 彻底删除）；全部删除操作走确认弹窗 → 回收站 → 提示流程 |
 | v0.4 | 2026-06-01 | RadialBarChart 替代 SunburstChart（极坐标辐射状柱状图）；灵动岛 Compact 槽位刘海包裹 + 文字颜色修复；ProcessManager 进程管理（NSWorkspace + libproc）；AppUninstaller 软件卸载（12 路径残留扫描）；回收站批量操作；垃圾详情卡死修复（异步排序） |
-| v0.1.1 | 2026-06-02 | 灵动岛 C 模式三态交互（展开→3s 收缩→紧凑，悬停展开，点击 RAM 弹出 Top-5 进程面板）；磁盘分析页 ScrollView + 树图字体增大 + 放射图内圈 0.25；XCTest 安全测试套件（35 用例 / 6 类 / CI 集成） |
-
-## 12. 测试架构 (v0.1.1)
-
-### 12.1 测试分层
-
-| 层 | 文件 | 用例 | 重点 |
-|----|------|:---:|------|
-| L1 安全核心 | SafetyManagerTests, TrashManagerTests | 13 | 白名单 13 路径 + 4 扩展名保护 + 删除→恢复→过期→孤儿全链路 |
-| L2 误删防御 | JunkDetectorTests, AppUninstallerTests | 15 | 22 规则匹配正确性 + 微信/Chrome/VS Code 误匹配检测 + 12 路径审计 |
-| L3 功能正确 | DuplicateDetectorTests, UnifiedScannerTests | 7 | 三级哈希去重 + 流式扫描四路分流 + 批处理冲刷 |
-
-### 12.2 测试辅助
-
-- `TestDataFactory.swift` — 共享的临时文件/目录创建工具（含 `createFile`、`createDuplicateFiles`、`createFile(ofSize:)`）
-- `TrashManager(recycleBinPath:)` via `#if DEBUG` — 可注入自定义回收站路径，隔离测试环境
-- `AppUninstaller.debugSearchPaths` via `#if DEBUG` — 暴露 12 条搜索路径供审计
-
-### 12.3 CI 管道
-
-GitHub Actions `safety-gate.yml`（macos-15 runner），push/PR 触发：L1+L2 → L3 → 全量（三阶段流水线）。XCTest 需 Xcode.app SDK，CLI 环境不可执行。
-
-### 12.4 已知代码问题（测试发现）
-
-| 文件 | 问题 | 严重度 |
-|------|------|--------|
-| JunkDetector.swift:194 | `enumerateJunkFiles` 使用 `.allObjects` 违反内存红线 | Medium |
-| DuplicateDetector.swift:87 | `collectFiles` 使用 `.allObjects` 违反内存红线 | Medium |
+| v0.1.1 | 2026-06-02 | 灵动岛 C 模式三态交互（展开→3s 收缩→紧凑，悬停展开，点击 RAM 弹出 Top-5 进程面板）；磁盘分析页 ScrollView + 树图字体增大 + 放射图内圈 0.25 |

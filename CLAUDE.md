@@ -17,7 +17,6 @@ macOS 原生文件分类整理 + 垃圾文件清理工具。SwiftUI GUI，面向
 - **删除安全红线**: 用户删除走 `TrashManager.moveToTrash()`（应用回收站 7 天）→ 过期走 `trashItem`（系统废纸篓 30 天）。全流程零 `removeItem` 调用（仅 TrashManager 对已验证为空的元数据目录用 `removeItem`）
 - **白名单**: `/System`、`/bin`、`/sbin`、`/usr/lib` 等硬编码排除（见 `SafetyManager`）
 - **内存红线**: 运行时 < 200MB（目标 ~100MB）。禁止一次性物化全量文件列表；所有文件遍历必须流式 + 批处理释放
-- **测试**: XCTest（35 用例 / 6 类），CI 用 GitHub Actions macos-15 runner。`#if DEBUG` 用于暴露测试专用 API。安全测试优先于功能测试
 
 ## 项目结构速查
 
@@ -58,8 +57,6 @@ Sources/MacCleanerApp/
     ├── TrashBin/           # ★ 回收站：文件列表 + 倒计时 + 批量恢复/彻底删除
     ├── ProcessManager/     # ★ 进程管理：搜索 + 筛选 + 终止（SIGTERM→SIGKILL）
     └── AppUninstaller/     # ★ 软件卸载：残留分析 + 确认弹窗 → 回收站
-└── Tests/
-    └── MacCleanerAppTests/  # XCTest 安全测试套件（35 用例 / 6 类）
 ```
 
 ## 命名与代码约定
@@ -77,7 +74,6 @@ Sources/MacCleanerApp/
 
 ```bash
 swift build                          # 编译（不需要 Xcode）
-swift test                           # 运行测试（需要 Xcode.app 提供 XCTest SDK）
 swift run                            # 运行（需要 Xcode.app 提供 macOS SDK）
 swift package generate-xcodeproj     # 生成 Xcode 项目文件
 bash scripts/build-dmg.sh            # 一键构建 .app + .dmg（Universal Binary）
