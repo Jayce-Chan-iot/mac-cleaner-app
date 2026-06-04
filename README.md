@@ -4,7 +4,7 @@
 
 [![Swift](https://img.shields.io/badge/Swift-6.3-orange)](https://swift.org)
 [![Platform](https://img.shields.io/badge/macOS-14%2B-blue)](https://apple.com/macos)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![License](https://img.shields.io/badge/License-Non--Commercial-red)](LICENSE)
 
 ---
 
@@ -456,10 +456,16 @@ xcrun notarytool submit MacCleanerApp-v0.1.1-signed.dmg \
 
 ## 许可证
 
-MIT License — 详见 [LICENSE](LICENSE) 文件。
+本项目采用自定义非商业源码可见许可，详见 [LICENSE](LICENSE)。
+
+允许个人学习、研究、内部评估和非商业使用。未经版权持有人书面授权，禁止任何商业使用，包括但不限于售卖、转售、商业分发、集成到付费产品或服务、用于付费清理/维护服务、SaaS 或商业咨询交付。
+
+本项目不是 MIT 开源项目；所有未明确授予的权利均由版权持有人保留。
 
 本项目引用的第三方库：
 - [DynamicNotchKit](https://github.com/MrKai77/DynamicNotchKit) — MIT License，通过 SPM 集成
+
+第三方许可说明见 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)。
 
 ---
 

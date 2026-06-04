@@ -1,0 +1,51 @@
+MacCleanerApp Non-Commercial Source-Available License
+
+Copyright (c) 2026 JayceChan. All rights reserved.
+
+This license applies to MacCleanerApp source code, documentation, binaries,
+release artifacts, and other project materials, except for third-party
+components that are covered by their own licenses.
+
+Permission
+----------
+You may download, install, run, inspect, and modify this project only for
+personal, educational, research, or internal non-commercial evaluation.
+
+Restrictions
+------------
+Without prior written permission from the copyright holder, you may not:
+
+1. Use this project, or any modified version of it, for commercial purposes.
+2. Sell, rent, lease, sublicense, or otherwise monetize this project.
+3. Distribute this project as part of a paid product, service, bundle, or
+   commercial offering.
+4. Use this project to provide paid cleanup, optimization, maintenance, SaaS,
+   consulting, or managed-service offerings.
+5. Redistribute modified or unmodified binaries, installers, or source code
+   outside the official repository or official release channels.
+6. Remove or obscure copyright, license, attribution, or third-party notices.
+7. Use the project name, branding, screenshots, or related marks to imply
+   endorsement or an official relationship.
+
+Commercial use includes any use intended for revenue generation, business
+operations, paid distribution, advertising-supported distribution, or inclusion
+in proprietary or commercial products or services.
+
+Third-Party Components
+----------------------
+Third-party components remain governed by their own licenses. Their inclusion
+does not grant any additional rights to MacCleanerApp itself. See
+THIRD_PARTY_LICENSES.md for notices.
+
+No Warranty
+-----------
+This project is provided "as is", without warranty of any kind, express or
+implied, including but not limited to warranties of merchantability, fitness
+for a particular purpose, and non-infringement. The copyright holder is not
+liable for any claim, damage, data loss, or other liability arising from use of
+the project.
+
+Termination
+-----------
+Any violation of this license automatically terminates the permissions granted
+above. All rights not expressly granted are reserved by the copyright holder.
