@@ -1,0 +1,39 @@
+# Swift/Xcode
+.build/
+DerivedData/
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+*.xcbkptlist
+
+# Package
+Packages/
+*.xcodeproj
+.swiftpm/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Claude
+.agents/
+.claude/
+.claude/skills/
+.claude/worktrees/
+.remember/
+
+# IDE
+.vscode/
+.idea/
+
+# Superpowers brainstorm cache
+.superpowers/
+
+# Build artifacts
+*.dmg

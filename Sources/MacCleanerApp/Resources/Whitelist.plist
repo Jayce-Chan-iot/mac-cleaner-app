@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>protectedPaths</key>
+    <array>
+        <string>/System</string>
+        <string>/bin</string>
+        <string>/sbin</string>
+        <string>/usr/lib</string>
+        <string>/usr/libexec</string>
+        <string>/usr/sbin</string>
+        <string>/usr/share</string>
+        <string>/usr/standalone</string>
+        <string>/.Spotlight-V100</string>
+        <string>/.fseventsd</string>
+        <string>/.DocumentRevisions-V100</string>
+        <string>/.TemporaryItems</string>
+        <string>/.Trashes</string>
+    </array>
+    <key>protectedExtensions</key>
+    <array>
+        <string>kext</string>
+        <string>framework</string>
+        <string>bundle</string>
+        <string>dylib</string>
+    </array>
+    <key>defaultMinFileSize</key>
+    <integer>100000000</integer>
+    <key>defaultOlderThanDays</key>
+    <integer>180</integer>
+    <key>maxScanDepth</key>
+    <integer>10</integer>
+</dict>
+</plist>

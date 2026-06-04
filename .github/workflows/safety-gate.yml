@@ -1,0 +1,64 @@
+name: Safety Gate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  security-core:
+    name: Security & Safety (L1+L2)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Resolve dependencies
+        run: swift package resolve
+
+      - name: Run L1 Security Tests
+        run: swift test --filter "SafetyManagerTests|TrashManagerTests"
+
+      - name: Run L2 False-Delete Defense Tests
+        run: swift test --filter "JunkDetectorTests|AppUninstallerTests"
+
+  functional:
+    name: Functional (L3)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Resolve dependencies
+        run: swift package resolve
+
+      - name: Run L3 Functional Tests
+        run: swift test --filter "DuplicateDetectorTests|UnifiedScannerTests"
+
+  full-suite:
+    name: Full Suite
+    needs: [security-core, functional]
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Resolve dependencies
+        run: swift package resolve
+
+      - name: Run All Tests
+        run: swift test 2>&1 | tee test-output.log
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-output.log
